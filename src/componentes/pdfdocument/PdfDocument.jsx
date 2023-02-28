@@ -8,14 +8,8 @@ function PdfDocument() {
 
 
   return (
-    <div className='text-center mt-2 row'>
-      <div className="col">
-        <button className='btn btn-secondary' onClick={()=>{Crearpdf('Poliza y Garantia')}} >Crear Poliza y Garantia</button>
-      </div>
-      <div className="col">
-        <button className='btn btn-secondary' onClick={()=>{Crearpdf('CheckList')}} >Crear CheckList</button>
-      </div>
-        
+    <div className='text-center mt-2'>
+        <button className='btn btn-secondary' onClick={Crearpdf} >Crear Pdf</button>
     </div>
   )
 }
