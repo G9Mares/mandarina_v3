@@ -1,28 +1,15 @@
-import React , {useRef} from 'react'
+import React , {useRef , useContext} from 'react'
 import SignatureCanvas from 'react-signature-canvas'
-import Swal from 'sweetalert2'
+import { VentaContext } from '../../context/VentaContext'
 
 
-function Garantia({date}) {
+function Garantia() {
+    const {tipo,marca,modelo,motor,niv, fechaActual, bateria,cargador} = useContext(VentaContext)
    
     const sigCanvas2 = useRef()
-    function confirm() {
-        Swal.fire({
-            title: 'Quieres guardar la firma?',
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: 'Guardar',
-            denyButtonText: `Repetir`,
-          }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-              Swal.fire('Saved!', '', 'success')
-            } else if (result.isDenied) {
-              Swal.fire("Repita la firma", '', 'info')
-              sigCanvas2.current.clear()
-            }
-          })
-        }
+
+
+    
   return (
     <div className='text-start mt-3 border border-3 rounded pt-2 pb-2 pe-4 ps-4 '>
         <div className="row">
@@ -101,19 +88,19 @@ function Garantia({date}) {
                 <tbody>
                 <tr>
                     <th scope='row'>Producto</th>
-                    <td><input type="text" className='form-control'  readOnly /></td>
+                    <td><input type="text" className='form-control'  readOnly  defaultValue={tipo} /></td>
                 </tr>
                 <tr>
-                    <th scope='row'>Marca y modelo</th>
-                    <td><input type="text" className='form-control'   /></td>
+                    <th scope='row'>Marca</th>
+                    <td><input type="text" className='form-control' readOnly  defaultValue={marca}  /></td>
                 </tr>
                 <tr>
-                    <th scope='row'>Motor</th>
-                    <td><input type="text" className='form-control'  readOnly /></td>
+                    <th scope='row'>Modelo</th>
+                    <td><input type="text" className='form-control' readOnly  defaultValue={modelo}  /></td>
                 </tr>
                 <tr>
-                    <th scope='row'>Cargador</th>
-                    <td><input type="text" className='form-control'  readOnly /></td>
+                    <th scope='row'>NIV</th>
+                    <td><input type="text" className='form-control' readOnly  defaultValue={niv}  /></td>
                 </tr>
                 </tbody>
             </table>  
@@ -123,16 +110,20 @@ function Garantia({date}) {
             <table className='table'>
                 <tbody>
                 <tr>
-                    <th scope='row'>N° Serie</th>
-                    <td><input type="text" className='form-control'  readOnly/></td>
+                    <th scope='row'>N° Bateria</th>
+                    <td><input type="text" className='form-control'  readOnly defaultValue={bateria} /></td>
+                </tr>
+                <tr>
+                    <th scope='row'>N° Cargador</th>
+                    <td><input type="text" className='form-control'  readOnly defaultValue={cargador} /></td>
+                </tr>
+                <tr>
+                    <th scope='row'>N° Motor</th>
+                    <td><input type="text" className='form-control'  readOnly defaultValue={motor}/></td>
                 </tr>
                 <tr>
                     <th scope='row'>Fecha de entrega</th>
-                    <td><input type="text" className='form-control'   readOnly/></td>
-                </tr>
-                <tr>
-                    <th scope='row'>Bateria</th>
-                    <td><input type="text" className='form-control'  readOnly/></td>
+                    <td><input type="text" className='form-control'   readOnly defaultValue={fechaActual} /></td>
                 </tr>
                 </tbody>
             </table>  
@@ -159,7 +150,7 @@ function Garantia({date}) {
             <div>
             <div className="border w-50 border-dark text-center ms-auto me-auto" >
                 <SignatureCanvas penColor='green'
-                                    canvasProps={{   className: 'sigCanvas2 w-75'}} ref={sigCanvas2} onEnd={confirm} clearOnResize={false} />
+                                    canvasProps={{   className: 'sigCanvas2 w-100 h-100'}} ref={sigCanvas2}  clearOnResize={false} />
                 <label className='text-center'></label>
         </div>
             </div>

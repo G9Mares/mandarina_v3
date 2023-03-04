@@ -1,4 +1,4 @@
-import React , {useState , useContext }   from 'react'
+import React , { useContext }   from 'react'
 import './Encabezado.css'
 import InputDrop from './InputDrop'
 import Datos from '../datosv/Datos'
@@ -12,9 +12,9 @@ import { VentaContext } from '../../context/VentaContext'
 
 function Encabezado() {
     
-    const {setsucursal ,setvendedor} = useContext(VentaContext)
+    const {setsucursal ,setvendedor,setcliente,setconcepto,fechaActual,setFechaActual} = useContext(VentaContext)
     
-    const [fechaActual, setFechaActual] = useState(new Date().toISOString().substring(0, 10))
+    
 
     const sucursales = ['Condesa', 'Horacio']
     const vendedor = ['Ignacio Salguero','Carlos Guerra','Randall Avila','Omar Cruz','Gustavo Mares']
@@ -37,7 +37,7 @@ function Encabezado() {
                     
                     <div className="input-group mb-3">
                             <span className="input-group-text" id="basic-addon1">Cliente</span>
-                            <input type="text" className="form-control" placeholder="Nombre del cliente" aria-label="cliente" aria-describedby="basic-addon1"/>
+                            <input type="text" className="form-control" placeholder="Nombre del cliente" aria-label="cliente" aria-describedby="basic-addon1" onChange={(e)=>{setcliente(e.target.value)}} />
                     </div>
 
 
@@ -48,7 +48,7 @@ function Encabezado() {
                         <input type="text" className="form-control" placeholder="Observaciones" aria-label="Observaciones" aria-describedby="basic-addon1"/>
                     </div>
                         
-                    <InputDrop dato={'Concepto'} opciones={concepto}/>
+                    <InputDrop dato={'Concepto'} opciones={concepto} seteador={setconcepto}/>
                         <div className="input-group mb-3">
                             <span className="input-group-text" id="basic-addon1">Fecha entrega</span>
                             <input type="date" className="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1" value={fechaActual} onChange={e => setFechaActual(e.target.value)} />

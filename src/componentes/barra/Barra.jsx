@@ -1,22 +1,9 @@
 import React from 'react'
 import './Barra.css'
-import jsPDF from 'jspdf';
 
 
 function Barra() {
 
-  
-  function descargar() {
-    const archivo = document.getElementById('archivo')
-    const doc = jsPDF('p', 'pt',"a3")
-    doc.html(archivo, {
-      callback: function (dispose) {
-
-        doc.save('test.pdf');
-      },
-
-    })
-  }
   return (
     <div className="container barra pb-2">
         	<div className="row pb-3">
@@ -31,7 +18,7 @@ function Barra() {
                 <div className="col-md-6 col-lg-6">
                 <div className="input-group mt-3">
                     <input type="text" className="form-control" placeholder="Email de envio" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-                    <button className="btn btn-secondary" type="button" id="button-addon2" onClick={descargar}  >Enviar Checklist</button>
+                    <button className="btn btn-secondary" type="button" id="button-addon2"  >Enviar Checklist</button>
                 </div>
                 </div>
                 
