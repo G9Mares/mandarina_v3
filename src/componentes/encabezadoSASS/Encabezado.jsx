@@ -1,7 +1,7 @@
 import React , { useContext }   from 'react'
 import './Encabezado.css'
-import InputDrop from './InputDrop'
-import Datos from '../datosv/Datos'
+
+import DatosSASS from '../datosSASS/Datos'
 import Lista from '../lista/Lista'
 import Footer from '../footer/Footer'
 import Garantia from '../garantia/Garantia'
@@ -11,15 +11,15 @@ import PdfDocument from '../pdfdocument/PdfDocument'
 
 
 
-function Encabezado() {
+function EncabezadoSASS() {
     
-    const {setsucursal ,setvendedor,setcliente,setconcepto,fechaActual,setFechaActual} = useContext(VentaContext)
+    const {setsucursal ,setvendedor,setcliente,setconcepto,fechaActual,setFechaActual,sucursal ,vendedor,cliente,concepto} = useContext(VentaContext)
     
     
 
-    const sucursales = ['Condesa', 'Horacio']
-    const vendedor = ['Ignacio Salguero','Carlos Guerra','Randall Avila','Omar Cruz','Gustavo Mares']
-    const concepto = ['Venta','Transferencia']
+    // const sucursales = ['Condesa', 'Horacio']
+    // const vendedor = ['Ignacio Salguero','Carlos Guerra','Randall Avila','Omar Cruz','Gustavo Mares']
+    // const concepto = ['Venta','Transferencia']
 
   return (
     <div className="container encabezado mt-4" id='archivo' >
@@ -33,12 +33,18 @@ function Encabezado() {
                 </h4>
                 <div className="row pb-3 mt-3">
                     <div className="col">
-                    <InputDrop dato={"Sucursal"} opciones={sucursales} seteador={setsucursal} />
-                    <InputDrop dato={'Vendedor'} opciones={vendedor} seteador={setvendedor} />
+                    <div className="input-group mb-3">
+                            <span className="input-group-text" id="basic-addon1">Sucursal</span>
+                            <input type="text" className="form-control" placeholder="Nombre de la Sucursal" aria-label="Sucursal" aria-describedby="basic-addon1" onChange={(e)=>{setsucursal(e.target.value)}} value={sucursal} />
+                    </div>
+                    <div className="input-group mb-3">
+                            <span className="input-group-text" id="basic-addon1">Vendedor</span>
+                            <input type="text" className="form-control" placeholder="Vendedor" aria-label="Vendedor" aria-describedby="basic-addon1" onChange={(e)=>{setvendedor(e.target.value)}} defaultValue={vendedor} />
+                    </div>
                     
                     <div className="input-group mb-3">
                             <span className="input-group-text" id="basic-addon1">Cliente</span>
-                            <input type="text" className="form-control" placeholder="Nombre del cliente" aria-label="cliente" aria-describedby="basic-addon1" onChange={(e)=>{setcliente(e.target.value)}} />
+                            <input type="text" className="form-control" placeholder="Nombre del cliente" aria-label="cliente" aria-describedby="basic-addon1" onChange={(e)=>{setcliente(e.target.value)}} defaultValue={cliente} />
                     </div>
 
 
@@ -49,7 +55,10 @@ function Encabezado() {
                         <input type="text" className="form-control" placeholder="Observaciones" aria-label="Observaciones" aria-describedby="basic-addon1"/>
                     </div>
                         
-                    <InputDrop dato={'Concepto'} opciones={concepto} seteador={setconcepto}/>
+                    <div className="input-group mb-3">
+                            <span className="input-group-text" id="basic-addon1">Concepto</span>
+                            <input type="text" className="form-control" placeholder="Tipo de movimiento" aria-label="Concepto" aria-describedby="basic-addon1" defaultValue={'Venta'} onChange={(e)=>{setcliente(e.target.value)}} />
+                    </div>
                         <div className="input-group mb-3">
                             <span className="input-group-text" id="basic-addon1">Fecha entrega</span>
                             <input type="date" className="form-control" placeholder="Fecha" aria-label="Fecha" aria-describedby="basic-addon1" value={fechaActual} onChange={e => setFechaActual(e.target.value)} />
@@ -58,7 +67,7 @@ function Encabezado() {
                 </div>
             </div>
         </div>
-    <Datos/>
+    <DatosSASS/>
     <Lista/>
     <Footer/>
     <Garantia/>
@@ -67,4 +76,4 @@ function Encabezado() {
   )
 }
 
-export default Encabezado
+export default EncabezadoSASS

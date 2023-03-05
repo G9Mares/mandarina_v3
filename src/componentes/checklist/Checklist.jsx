@@ -1,9 +1,8 @@
 import React  from 'react';
-import Barra from '../barra/Barra'
 import Encabezado from '../encabezado/Encabezado'
 
 
-function Checklist() {
+function CheckList_SASS() {
 
 
   
@@ -11,11 +10,10 @@ function Checklist() {
     
 
         <div className="main">
-          <Barra />
           <Encabezado/>
         </div>
 
   );
 }
 
-export default Checklist;
+export default CheckList_SASS;

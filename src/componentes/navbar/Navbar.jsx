@@ -17,7 +17,7 @@ function Navbar() {
                            <Link className="nav-link active" aria-current="page" to='/CheckList' >Chek-List</Link>
                        </li>
                        <li className="nav-item">
-                           <Link className="nav-link" to='/Document'>Link 1</Link>
+                           <Link className="nav-link" to='/CheckList_SASS'>CheckList Operam</Link>
                        </li>
                        <li className="nav-item">
                            <Link className="nav-link" href="#">Link 2</Link>

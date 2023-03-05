@@ -22,6 +22,9 @@ function VentaContextProvider({children}) {
     const [marca ,setmarca]= useState('')
     const [modelo ,setmodelo]= useState('')
 
+    const [correo,setcorreo] = useState('')
+    const [numtel,setnumtel] = useState('')
+
     const [Marco,setMarco] =useState({'Concepto':'Marco','Status':'','Observaciones':''})
     const [Display,setDisplay] =useState({'Concepto':'Display','Status':'','Observaciones':''})
     const [Asiento,setAsiento] =useState({'Concepto':'Asiento','Status':'','Observaciones':''})
@@ -280,8 +283,11 @@ function VentaContextProvider({children}) {
 
         
         pdf.save("Checklist.pdf")
+
+        
             }
-    const data = {Switch, Reflactantes,Salpicaderas, Herramienta, Juego, Bateria, Cargador, Aditamentos, Manuales, Motor, Alarma, Display, Asiento, Sistema, Verificacion, Acelerador, Frenos, Ruedas, Claxon, Luces, Espejos,cliente,vendedor,tipo,modelo,marca,motor,niv,bateria,cargador,fechaActual,Marco,CambiarParametro,setFrenos,setmodelo,Crearpdf,setconcepto,setsucursal,setFechaActual,setfolio,setvendedor,setcliente,settipo,setniv,setsku,setcargador,setmotor,setbateria,setmarca,setMarco,setDisplay,setAsiento,setSistema,setVerificacion,setAcelerador,setRuedas,setClaxon,setLuces,setEspejos,setSalpicaderas,setHerramienta,setJuego,setBateria,setCargador,setAditamentos,setManuales,setMotor,setAlarma,setSwitch,setReflactantes,setfirma1,setfirma2}
+    const data = {correo,numtel,Switch,sucursal, Reflactantes,Salpicaderas, Herramienta, Juego, Bateria, Cargador, Aditamentos, Manuales, Motor, Alarma, Display, Asiento, Sistema, Verificacion, Acelerador, Frenos, Ruedas, Claxon, Luces, Espejos,cliente,vendedor,tipo,modelo,marca,motor,niv,bateria,cargador,fechaActual,Marco,
+      setcorreo,setnumtel,CambiarParametro,setFrenos,setmodelo,Crearpdf,setconcepto,setsucursal,setFechaActual,setfolio,setvendedor,setcliente,settipo,setniv,setsku,setcargador,setmotor,setbateria,setmarca,setMarco,setDisplay,setAsiento,setSistema,setVerificacion,setAcelerador,setRuedas,setClaxon,setLuces,setEspejos,setSalpicaderas,setHerramienta,setJuego,setBateria,setCargador,setAditamentos,setManuales,setMotor,setAlarma,setSwitch,setReflactantes,setfirma1,setfirma2}
   return (
     <VentaContext.Provider value={data}>
         {children}
